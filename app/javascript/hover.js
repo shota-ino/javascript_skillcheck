@@ -7,13 +7,21 @@ function hover() {
   articles.forEach((article) => {
     // マウスオーバーしたときのイベントハンドラー
     article.addEventListener('mouseover', () => {
-      console.log("マウスオーバー");
+      // console.log("マウスオーバー");（問題2で試しに記述）
+      // 属性の追加
+      article.setAttribute("style", "background-color:#F1940B;");
     });
-    // マウスアウトしたときのイベントハンドラー、mouseoutを用いて設定
+    // マウスアウトしたときのイベントハンドラー
     article.addEventListener('mouseout', () => {
-      console.log("マウスアウト");
+      // console.log("マウスアウト");（問題3で試しに記述）
+      // 属性の削除
+      article.removeAttribute("style", "background-color:#F1940B;");
     });
   });
 }
+// 非同期で投稿した要素へも適用されるように
+// 「1秒に1回」、関数hoverが読み込まれるように
+setInterval(hover, 1000);
 
-window.addEventListener('load', hover);
+// 「ページが読み込まれたら」ではなく
+// window.addEventListener('load', hover);
